@@ -8,9 +8,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class RestaurantHttpServer {
-    private static HttpServer server;
-
-    public static void initServer(){
+    private HttpServer server;
+    public void initServer(){
         try {
             server = HttpServer.create(new InetSocketAddress(Config.serverPort), 0);
             server.createContext("/", new DefaultEndpoint());
@@ -19,5 +18,9 @@ public class RestaurantHttpServer {
         }catch (IOException exception){
             System.out.println("There was an error during the server creation");
         }
+    }
+
+    public void stopServer(){
+        server.stop(0);
     }
 }
