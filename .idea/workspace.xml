@@ -4,22 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/DefaultEndpoint.java" afterDir="false" />
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Refactored http server">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/UserManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/base/RequestMethod.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/user/LoginEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/user/RegistrationEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/BasicEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/base/BasicEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/DefaultEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/DefaultEndpoint.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,28 +34,39 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2cY2qQOPSX92aL4goyc5FWpG43u" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/FIXES/FixTAC/build.gradle&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vvi.restaurantserver.Main" />
@@ -85,6 +96,75 @@
       <option name="presentableId" value="Default" />
       <updated>1708274385026</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1708278546706</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708278546706</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added a default gradle project setup">
+      <option name="closed" value="true" />
+      <created>1708278588506</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708278588506</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added a simple http server with default endpoint">
+      <option name="closed" value="true" />
+      <created>1708278626599</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708278626599</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added a MySQL driver to build configuration">
+      <option name="closed" value="true" />
+      <created>1708374590800</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708374590800</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implemented a configuration">
+      <option name="closed" value="true" />
+      <created>1708374625791</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708374625791</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Refactored http server">
+      <option name="closed" value="true" />
+      <created>1708374651315</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708374651315</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="Added a default gradle project setup" />
+    <MESSAGE value="Added a simple http server with default endpoint" />
+    <MESSAGE value="Added a MySQL driver to build configuration" />
+    <MESSAGE value="Implemented a configuration" />
+    <MESSAGE value="Refactored http server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored http server" />
   </component>
 </project>
