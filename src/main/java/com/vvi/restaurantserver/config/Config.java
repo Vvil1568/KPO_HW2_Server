@@ -9,16 +9,17 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Config {
-    public static int serverPort;
-    public static String databaseHost;
-    public static int databasePort;
-    public static String databaseLogin;
-    public static String databasePassword;
+    private static int serverPort;
+    private static String databaseHost;
+    private static int databasePort;
+    private static String databaseName;
+    private static String databaseLogin;
+    private static String databasePassword;
 
-    public static boolean initConfig(String fileName){
+    public static boolean initConfig(String fileName) {
         File file = new File(fileName);
-        if(!file.exists()){
-            if(!genConfigTemplate(fileName)) return false;
+        if (!file.exists()) {
+            if (!genConfigTemplate(fileName)) return false;
             System.out.println("Created a new config file.");
             System.out.println("Please fill out the config and restart the server.");
             return false;
@@ -26,50 +27,51 @@ public class Config {
         List<String> lines;
         try {
             lines = Files.readAllLines(file.toPath());
-        }catch (IOException exception){
+        } catch (IOException exception) {
             System.out.println("Cannot read the contents of a config file");
             return false;
         }
-        try{
+        try {
             serverPort = getIntProperty(lines, "Server port");
             databaseHost = getStrProperty(lines, "Database host");
             databasePort = getIntProperty(lines, "Database port");
-            databaseLogin = getStrProperty(lines,"Database login");
-            databasePassword = getStrProperty(lines,"Database password");
-        }catch (NumberFormatException exception){
-            System.out.println("Can't parse \""+exception.getMessage()+"\" config entry: the value should be integer!");
+            databaseName = getStrProperty(lines, "Database name");
+            databaseLogin = getStrProperty(lines, "Database login");
+            databasePassword = getStrProperty(lines, "Database password");
+        } catch (NumberFormatException exception) {
+            System.out.println("Can't parse \"" + exception.getMessage() + "\" config entry: the value should be integer!");
             return false;
-        }catch (NoSuchElementException exception){
-            System.out.println("Can't find config entry \""+exception+"\"!");
+        } catch (NoSuchElementException exception) {
+            System.out.println("Can't find config entry \"" + exception + "\"!");
             return false;
         }
         return true;
     }
 
-    public static int getIntProperty(List<String> lines, String name){
+    public static int getIntProperty(List<String> lines, String name) {
         String value = getStrProperty(lines, name);
-        try{
+        try {
             return Integer.parseInt(value);
-        }catch (NumberFormatException exception){
+        } catch (NumberFormatException exception) {
             throw new NumberFormatException(name);
         }
     }
 
-    public static String getStrProperty(List<String> lines, String name){
+    public static String getStrProperty(List<String> lines, String name) {
         String line = "";
-        for(String l: lines){
-            if(l.startsWith(name)){
+        for (String l : lines) {
+            if (l.startsWith(name)) {
                 line = l;
                 break;
             }
         }
-        if(line.isEmpty()){
+        if (line.isEmpty()) {
             throw new NoSuchElementException(name);
         }
-        return line.substring(name.length()+1).trim();
+        return line.substring(name.length() + 1).trim();
     }
 
-    public static boolean genConfigTemplate(String fileName){
+    public static boolean genConfigTemplate(String fileName) {
         File file = new File(fileName);
         try {
             file.createNewFile();
@@ -79,14 +81,39 @@ public class Config {
                     "===DataBase===",
                     "Database host:",
                     "Database port:",
+                    "Database name:",
                     "Database login:",
                     "Database password:"
             );
-            Files.write(file.toPath(),defaultConfig, StandardCharsets.UTF_8);
+            Files.write(file.toPath(), defaultConfig, StandardCharsets.UTF_8);
             return true;
-        }catch (IOException exception) {
+        } catch (IOException exception) {
             System.out.println("Can not create a default configuration file!");
             return false;
         }
+    }
+
+    public static int getServerPort() {
+        return serverPort;
+    }
+
+    public static String getDatabaseHost() {
+        return databaseHost;
+    }
+
+    public static String getDatabaseLogin() {
+        return databaseLogin;
+    }
+
+    public static int getDatabasePort() {
+        return databasePort;
+    }
+
+    public static String getDatabasePassword() {
+        return databasePassword;
+    }
+
+    public static String getDatabaseName() {
+        return databaseName;
     }
 }
