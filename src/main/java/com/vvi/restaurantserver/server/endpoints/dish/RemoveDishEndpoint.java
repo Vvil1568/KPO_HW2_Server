@@ -1,15 +1,14 @@
 package com.vvi.restaurantserver.server.endpoints.dish;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.sun.net.httpserver.HttpExchange;
 import com.vvi.restaurantserver.database.DatabaseManager;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
 import com.vvi.restaurantserver.server.endpoints.base.RequestMethod;
 
-public class RemoveDish extends BasicEndpoint {
+public class RemoveDishEndpoint extends BasicEndpoint {
 
-    public RemoveDish() {
+    public RemoveDishEndpoint() {
         super("/dish/remove");
         new Builder(this)
                 .setRequestMethod(RequestMethod.POST)

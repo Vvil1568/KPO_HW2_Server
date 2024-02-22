@@ -11,9 +11,9 @@ import com.vvi.restaurantserver.utils.JsonSerialisationUtils;
 
 import java.util.ArrayList;
 
-public class GetDishList extends BasicEndpoint {
+public class GetDishListEndpoint extends BasicEndpoint {
 
-    public GetDishList() {
+    public GetDishListEndpoint() {
         super("/dish/get");
         new Builder(this)
                 .setRequestMethod(RequestMethod.GET)

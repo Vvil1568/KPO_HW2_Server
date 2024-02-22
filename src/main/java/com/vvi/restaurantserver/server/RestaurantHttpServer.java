@@ -5,8 +5,8 @@ import com.vvi.restaurantserver.config.Config;
 import com.vvi.restaurantserver.server.endpoints.DefaultEndpoint;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.AddDishEndpoint;
-import com.vvi.restaurantserver.server.endpoints.dish.GetDishList;
-import com.vvi.restaurantserver.server.endpoints.dish.RemoveDish;
+import com.vvi.restaurantserver.server.endpoints.dish.GetDishListEndpoint;
+import com.vvi.restaurantserver.server.endpoints.dish.RemoveDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.user.*;
 
 import java.io.IOException;
@@ -25,8 +25,8 @@ public class RestaurantHttpServer {
             addEndpoint(new RegistrationEndpoint());
             addEndpoint(new LoginEndpoint());
             addEndpoint(new AddDishEndpoint());
-            addEndpoint(new RemoveDish());
-            addEndpoint(new GetDishList());
+            addEndpoint(new RemoveDishEndpoint());
+            addEndpoint(new GetDishListEndpoint());
             server.setExecutor(null);
             server.start();
         }catch(IOException e){
