@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import com.vvi.restaurantserver.database.DatabaseManager;
+import com.vvi.restaurantserver.database.tables.UserManager;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +15,7 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class BasicEndpoint implements HttpHandler {
     public final String name;
@@ -21,7 +24,7 @@ public abstract class BasicEndpoint implements HttpHandler {
 
     private String[] requiredFields = new String[]{};
     private boolean requireToken;
-    protected String token;
+    protected String token = "";
     private boolean adminOnly;
 
     protected BasicEndpoint(String name) {
@@ -44,8 +47,17 @@ public abstract class BasicEndpoint implements HttpHandler {
             sendResponse(http, 400, "Invalid request method!");
             return;
         }
-        if(requireToken){
-            //TODO
+        List<String> tokens = http.getRequestHeaders().get("Authorization");
+        if(tokens!=null && !tokens.isEmpty() && tokens.get(0).startsWith("Bearer ")){
+            this.token = tokens.get(0).substring(7);
+        }
+        if(requireToken && !DatabaseManager.getInstance().userManager.isValidUser(token)){
+            sendResponse(http, 401, "Invalid authorisation token!");
+            return;
+        }
+        if(adminOnly && !DatabaseManager.getInstance().userManager.isAdmin(token)){
+            sendResponse(http, 401, "Invalid authorisation token!");
+            return;
         }
         JsonObject body = getBody(http);
         if (!requireFields(http, body, requiredFields)) {

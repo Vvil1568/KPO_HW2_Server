@@ -3,6 +3,7 @@ package com.vvi.restaurantserver.server.endpoints.user;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import com.sun.net.httpserver.HttpExchange;
+import com.vvi.restaurantserver.database.DatabaseManager;
 import com.vvi.restaurantserver.database.items.User;
 import com.vvi.restaurantserver.database.tables.UserManager;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
@@ -13,12 +14,12 @@ import java.util.AbstractMap;
 public class RegistrationEndpoint extends BasicEndpoint {
     private final UserManager userManager;
 
-    public RegistrationEndpoint(UserManager manager) {
+    public RegistrationEndpoint() {
         super("/registration");
         new Builder(this)
                 .setRequestMethod(RequestMethod.POST)
                 .setRequiredFields(new String[]{"login", "passHash"});
-        this.userManager = manager;
+        this.userManager = DatabaseManager.getInstance().userManager;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class RegistrationEndpoint extends BasicEndpoint {
         String passHash = body.get("passHash").getAsString();
         String fio = body.has("fio") ? body.get("fio").getAsString() : "";
         if (userManager.loginExists(login)) {
-            sendResponse(http, 400, "Login already exists");
+            sendResponse(http, 400, "Пользователь с таким логином уже существует");
             return;
         }
         if(!userManager.register(new User(fio, login, passHash, !userManager.hasUsers()))){
