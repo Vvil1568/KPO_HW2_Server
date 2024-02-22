@@ -9,9 +9,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         if (!Config.initConfig("config.cfg")) return;
-        DatabaseManager manager = new DatabaseManager();
-        if (!manager.init()) return;
-        RestaurantHttpServer server = new RestaurantHttpServer(manager);
+        if (!DatabaseManager.getInstance().init()) return;
+        RestaurantHttpServer server = new RestaurantHttpServer();
         server.initServer();
         Scanner scanner = new Scanner(System.in);
         String command;
@@ -19,6 +18,6 @@ public class Main {
             command = scanner.next();
         } while (command.equals("STOP"));
         server.stopServer();
-        manager.shutdown();
+        DatabaseManager.getInstance().shutdown();
     }
 }
