@@ -1,7 +1,9 @@
 package com.vvi.restaurantserver.database;
 
 import com.vvi.restaurantserver.config.Config;
+import com.vvi.restaurantserver.database.tables.CommentManager;
 import com.vvi.restaurantserver.database.tables.DishManager;
+import com.vvi.restaurantserver.database.tables.OrderManager;
 import com.vvi.restaurantserver.database.tables.UserManager;
 
 import java.sql.Connection;
@@ -13,6 +15,8 @@ public class DatabaseManager {
     private Connection connection;
     public UserManager userManager;
     public DishManager dishManager;
+    public OrderManager orderManager;
+    public CommentManager commentManager;
 
     private static DatabaseManager instance;
 
@@ -38,6 +42,8 @@ public class DatabaseManager {
             connection = DriverManager.getConnection(url, properties);
             userManager = new UserManager(connection);
             dishManager = new DishManager(connection);
+            orderManager = new OrderManager(connection);
+            commentManager = new CommentManager(connection);
             return true;
         } catch (SQLException e) {
             return false;
