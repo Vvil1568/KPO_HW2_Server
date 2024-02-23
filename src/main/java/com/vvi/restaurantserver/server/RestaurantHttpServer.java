@@ -4,9 +4,11 @@ import com.sun.net.httpserver.HttpServer;
 import com.vvi.restaurantserver.config.Config;
 import com.vvi.restaurantserver.server.endpoints.DefaultEndpoint;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
+import com.vvi.restaurantserver.server.endpoints.comment.LeaveCommentEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.AddDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.GetDishListEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.RemoveDishEndpoint;
+import com.vvi.restaurantserver.server.endpoints.order.*;
 import com.vvi.restaurantserver.server.endpoints.user.*;
 
 import java.io.IOException;
@@ -27,6 +29,14 @@ public class RestaurantHttpServer {
             addEndpoint(new AddDishEndpoint());
             addEndpoint(new RemoveDishEndpoint());
             addEndpoint(new GetDishListEndpoint());
+            addEndpoint(new AddDishToOrderEndpoint());
+            addEndpoint(new ChangeDishCountEndpoint());
+            addEndpoint(new GetOrderStatusEndpoint());
+            addEndpoint(new GetOrderDishListEndpoint());
+            addEndpoint(new GetUserListEndpoint());
+            addEndpoint(new ChangeModeEndpoint());
+            addEndpoint(new LeaveCommentEndpoint());
+            addEndpoint(new GetAllOrderedListEndpoint());
             server.setExecutor(null);
             server.start();
         }catch(IOException e){

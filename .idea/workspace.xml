@@ -4,22 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Refactored http server">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/UserManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/base/RequestMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/user/LoginEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/user/RegistrationEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Renamed dish endpoints">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/OrderStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/CommentManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/OrderManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/comment/LeaveCommentEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/AddDishToOrderEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/ChangeDishCountEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/GetAllOrderedListEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/GetOrderDishListEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/GetOrderStatusEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/user/ChangeModeEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/user/GetUserListEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/UserManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/BasicEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/base/BasicEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/DefaultEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/DefaultEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/utils/JsonSerialisationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/utils/JsonSerialisationUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +145,111 @@
       <option name="project" value="LOCAL" />
       <updated>1708374651315</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added google gson dependency">
+      <option name="closed" value="true" />
+      <created>1708523988770</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708523988770</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Update idea caches">
+      <option name="closed" value="true" />
+      <created>1708524028681</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524028681</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added database and a user manager">
+      <option name="closed" value="true" />
+      <created>1708524047586</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524047586</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added new fields to config">
+      <option name="closed" value="true" />
+      <created>1708524088938</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524088938</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Updated basic endpoint">
+      <option name="closed" value="true" />
+      <created>1708524117405</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524117405</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Updated default endpoint, added login and registration endpoints">
+      <option name="closed" value="true" />
+      <created>1708524164243</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524164243</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Changed server and main structure">
+      <option name="closed" value="true" />
+      <created>1708524193780</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708524193780</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Changed database to using singleton pattern">
+      <option name="closed" value="true" />
+      <created>1708596422440</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708596422442</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Added dish manager and dish classes">
+      <option name="closed" value="true" />
+      <created>1708596450904</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708596450904</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added new endpoints for dish management">
+      <option name="closed" value="true" />
+      <created>1708596496206</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708596496206</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changed basic endpoint and login/registration endpoints structure">
+      <option name="closed" value="true" />
+      <created>1708596533163</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708596533163</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Updated main class">
+      <option name="closed" value="true" />
+      <created>1708596559771</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1708596559772</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Renamed dish endpoints">
+      <option name="closed" value="true" />
+      <created>1708600292776</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1708600292776</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -165,6 +270,19 @@
     <MESSAGE value="Added a MySQL driver to build configuration" />
     <MESSAGE value="Implemented a configuration" />
     <MESSAGE value="Refactored http server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored http server" />
+    <MESSAGE value="Added google gson dependency" />
+    <MESSAGE value="Update idea caches" />
+    <MESSAGE value="Added database and a user manager" />
+    <MESSAGE value="Added new fields to config" />
+    <MESSAGE value="Updated basic endpoint" />
+    <MESSAGE value="Updated default endpoint, added login and registration endpoints" />
+    <MESSAGE value="Changed server and main structure" />
+    <MESSAGE value="Changed database to using singleton pattern" />
+    <MESSAGE value="Added dish manager and dish classes" />
+    <MESSAGE value="Added new endpoints for dish management" />
+    <MESSAGE value="Changed basic endpoint and login/registration endpoints structure" />
+    <MESSAGE value="Updated main class" />
+    <MESSAGE value="Renamed dish endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed dish endpoints" />
   </component>
 </project>
