@@ -12,22 +12,22 @@ import java.util.ArrayList;
 public class UserManager {
     private final Connection connection;
 
-    private final String USER_LIST_QUERY = "SELECT * FROM user;";
+    private final String USER_LIST_QUERY = "SELECT * FROM user WHERE token<>?;";
     private final String LOGIN_QUERY = "SELECT token, is_admin FROM user WHERE login=? AND pass_hash=?;";
     private final String LOGIN_EXISTS_QUERY = "SELECT EXISTS(SELECT * FROM user WHERE login=?);";
     private final String REGISTER_QUERY = "INSERT INTO user (token, fio, login, pass_hash, is_admin) VALUES (?,?,?,?,?);";
     private final String HAS_USERS_QUERY = "SELECT EXISTS(SELECT 1 FROM user);";
     private final String IS_VALID_USER_QUERY = "SELECT EXISTS(SELECT * FROM user WHERE token=?);";
     private final String IS_ADMIN_QUERY = "SELECT EXISTS(SELECT * FROM user WHERE token=? AND is_admin=1);";
-    private final String MAKE_ADMIN_QUERY = "UPDATE user SET is_admin=1 WHERE login=?;";
-
+    private final String CHANGE_MODE_QUERY = "UPDATE user SET is_admin = CASE WHEN is_admin = 1 THEN 0 ELSE 1 END WHERE login = ?;";
     public UserManager(Connection connection) {
         this.connection = connection;
     }
 
-    public ArrayList<User> getUserList() {
+    public ArrayList<User> getUserList(String token) {
         try {
             PreparedStatement statement = connection.prepareStatement(USER_LIST_QUERY);
+            statement.setString(1, token);
             ResultSet resultSet = statement.executeQuery();
             ArrayList<User> result = new ArrayList<>();
             while (resultSet.next()) {
@@ -115,17 +115,16 @@ public class UserManager {
         return new AbstractMap.SimpleEntry<>("", false);
     }
 
-    public boolean makeAdmin(String login) {
+    public boolean changeMode(String login) {
         try {
-            PreparedStatement statement = connection.prepareStatement(MAKE_ADMIN_QUERY);
+            PreparedStatement statement = connection.prepareStatement(CHANGE_MODE_QUERY);
             statement.setString(1, login);
             return statement.executeUpdate() == 1;
         } catch (SQLException e) {
-            System.out.println("An error occurred while executing makeAdmin query");
+            System.out.println("An error occurred while executing changeMode query");
         }
         return false;
     }
-
     public boolean register(User user) {
         try {
             PreparedStatement statement = connection.prepareStatement(REGISTER_QUERY);
