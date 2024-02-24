@@ -10,18 +10,21 @@ import com.vvi.restaurantserver.server.endpoints.dish.GetDishListEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.RemoveDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.order.*;
 import com.vvi.restaurantserver.server.endpoints.user.*;
+import com.vvi.restaurantserver.simulation.KitchenSimulator;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class RestaurantHttpServer {
     private HttpServer server;
+    private KitchenSimulator simulator;
 
     public RestaurantHttpServer() {
     }
 
     public void initServer() {
         try {
+            simulator = new KitchenSimulator();
             server = HttpServer.create(new InetSocketAddress(Config.getServerPort()), 0);
             addEndpoint(new DefaultEndpoint());
             addEndpoint(new RegistrationEndpoint());
@@ -37,6 +40,7 @@ public class RestaurantHttpServer {
             addEndpoint(new ChangeModeEndpoint());
             addEndpoint(new LeaveCommentEndpoint());
             addEndpoint(new GetAllOrderedListEndpoint());
+            addEndpoint(new PostOrderEndpoint(simulator));
             server.setExecutor(null);
             server.start();
         }catch(IOException e){
@@ -50,5 +54,6 @@ public class RestaurantHttpServer {
 
     public void stopServer() {
         server.stop(0);
+        simulator.stopKitchen();
     }
 }
