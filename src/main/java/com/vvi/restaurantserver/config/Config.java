@@ -15,6 +15,7 @@ public class Config {
     private static String databaseName;
     private static String databaseLogin;
     private static String databasePassword;
+    private static int cooksCount;
 
     public static boolean initConfig(String fileName) {
         File file = new File(fileName);
@@ -38,6 +39,7 @@ public class Config {
             databaseName = getStrProperty(lines, "Database name");
             databaseLogin = getStrProperty(lines, "Database login");
             databasePassword = getStrProperty(lines, "Database password");
+            cooksCount = getIntProperty(lines, "Cooks count");
         } catch (NumberFormatException exception) {
             System.out.println("Can't parse \"" + exception.getMessage() + "\" config entry: the value should be integer!");
             return false;
@@ -83,7 +85,9 @@ public class Config {
                     "Database port:",
                     "Database name:",
                     "Database login:",
-                    "Database password:"
+                    "Database password:",
+                    "==Simulation==",
+                    "Cooks count:"
             );
             Files.write(file.toPath(), defaultConfig, StandardCharsets.UTF_8);
             return true;
@@ -115,5 +119,9 @@ public class Config {
 
     public static String getDatabaseName() {
         return databaseName;
+    }
+
+    public static int getCooksCount() {
+        return cooksCount;
     }
 }
