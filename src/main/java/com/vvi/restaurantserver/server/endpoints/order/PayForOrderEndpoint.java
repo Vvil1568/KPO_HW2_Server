@@ -1,32 +1,33 @@
 package com.vvi.restaurantserver.server.endpoints.order;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import com.sun.net.httpserver.HttpExchange;
 import com.vvi.restaurantserver.database.DatabaseManager;
 import com.vvi.restaurantserver.database.items.OrderStatus;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
 import com.vvi.restaurantserver.server.endpoints.base.RequestMethod;
+import com.vvi.restaurantserver.simulation.KitchenSimulator;
 
-public class GetOrderStatusEndpoint extends BasicEndpoint {
+public class PayForOrderEndpoint extends BasicEndpoint {
 
-    public GetOrderStatusEndpoint() {
-        super("/order/getstatus");
+    public PayForOrderEndpoint() {
+        super("/order/payfororder");
         new Builder(this)
-                .setRequestMethod(RequestMethod.GET)
+                .setRequestMethod(RequestMethod.POST)
                 .setRequireToken();
     }
 
     @Override
     public void handle(HttpExchange http, JsonObject body) {
         OrderStatus status = DatabaseManager.getInstance().orderManager.getOrderStatus(token);
-        if(status==null){
-            sendResponse(http, 400, "An error occurred during the order status request");
+        if(status!=OrderStatus.COOKED){
+            sendResponse(http, 400, "Невозможно оплатить заказ, который "+status.name);
             return;
         }
+
+        DatabaseManager.getInstance().orderManager.changeOrderStatus(token, OrderStatus.PAID);
+
         JsonObject response = new JsonObject();
-        response.add("status",new JsonPrimitive("Заказ " +status.name));
-        response.add("status_number",new JsonPrimitive(status.ordinal()));
         sendResponse(http, 200, response.toString());
     }
 }

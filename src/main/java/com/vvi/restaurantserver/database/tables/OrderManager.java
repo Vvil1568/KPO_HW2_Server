@@ -51,6 +51,9 @@ public class OrderManager {
 
     private final String INCREMENT_LAST_PART_QUERY = "UPDATE `order` SET last_part=last_part+1 WHERE order_id=?;";
 
+    private final String REMOVE_ORDER_DISHES_QUERY = "DELETE FROM order_to_dish WHERE order_id = ?;";
+
+    private final String REMOVE_ORDER_QUERY = "DELETE FROM `order` WHERE order_id = ?;";
 
     public ArrayList<Dish> getAllOrderedList(String userToken) {
         try {
@@ -163,6 +166,25 @@ public class OrderManager {
             System.out.println("An error occurred while executing getDishCount query");
         }
         return -1;
+    }
+
+    public boolean removeOrder(String userToken){
+        int curOrderId = getCurrentOrderId(userToken);
+        if (curOrderId == -1) {
+            System.out.println("An error occurred while executing removeOrder query");
+            return false;
+        }
+        try {
+            PreparedStatement statement = connection.prepareStatement(REMOVE_ORDER_DISHES_QUERY);
+            statement.setInt(1, curOrderId);
+            statement.executeUpdate();
+            statement = connection.prepareStatement(REMOVE_ORDER_QUERY);
+            statement.setInt(1, curOrderId);
+            return statement.executeUpdate()==1;
+        } catch (SQLException e) {
+            System.out.println("An error occurred while executing removeOrder query");
+        }
+        return false;
     }
 
     public OrderStatus getOrderStatus(String userToken) {
