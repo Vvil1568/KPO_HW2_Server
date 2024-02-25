@@ -4,14 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Added comment manager and comment endpoints, changed serialization utils">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/PostOrderEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" afterDir="false" />
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Added post order endpoint to the server">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/StatisticsManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/CancelOrderEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/PayForOrderEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/statistics/GetCommentListEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/statistics/GetFavouriteDishEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/statistics/GetOrderCountEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/statistics/GetRatingsEndpoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/statistics/GetTotalRevenueEndpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/config/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/OrderStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/OrderManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/GetOrderStatusEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/order/GetOrderStatusEndpoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/utils/JsonSerialisationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/utils/JsonSerialisationUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +273,39 @@
       <option name="project" value="LOCAL" />
       <updated>1708692161200</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Changed order manager to use order parts">
+      <option name="closed" value="true" />
+      <created>1708765455605</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1708765455605</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Changed order manager to use order parts">
+      <option name="closed" value="true" />
+      <created>1708765489540</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1708765489540</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Added config entry and kitchen simulator">
+      <option name="closed" value="true" />
+      <created>1708765891154</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1708765891154</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Added post order endpoint to the server">
+      <option name="closed" value="true" />
+      <created>1708765904993</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1708765904993</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -279,7 +320,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="Added a default gradle project setup" />
     <MESSAGE value="Added a simple http server with default endpoint" />
     <MESSAGE value="Added a MySQL driver to build configuration" />
@@ -301,6 +341,26 @@
     <MESSAGE value="Added userlist endpoints" />
     <MESSAGE value="Added order manager and order endpoints" />
     <MESSAGE value="Added comment manager and comment endpoints, changed serialization utils" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comment manager and comment endpoints, changed serialization utils" />
+    <MESSAGE value="Changed order status" />
+    <MESSAGE value="Changed order manager to use order parts" />
+    <MESSAGE value="Added config entry and kitchen simulator" />
+    <MESSAGE value="Added post order endpoint to the server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added post order endpoint to the server" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java</url>
+          <line>46</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/StatisticsManager.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

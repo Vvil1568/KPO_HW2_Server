@@ -9,6 +9,7 @@ import com.vvi.restaurantserver.server.endpoints.dish.AddDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.GetDishListEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.RemoveDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.order.*;
+import com.vvi.restaurantserver.server.endpoints.statistics.*;
 import com.vvi.restaurantserver.server.endpoints.user.*;
 import com.vvi.restaurantserver.simulation.KitchenSimulator;
 
@@ -41,8 +42,16 @@ public class RestaurantHttpServer {
             addEndpoint(new LeaveCommentEndpoint());
             addEndpoint(new GetAllOrderedListEndpoint());
             addEndpoint(new PostOrderEndpoint(simulator));
+            addEndpoint(new CancelOrderEndpoint(simulator));
+            addEndpoint(new PayForOrderEndpoint());
+            addEndpoint(new GetTotalRevenueEndpoint());
+            addEndpoint(new GetOrderCountEndpoint());
+            addEndpoint(new GetFavouriteDishEndpoint());
+            addEndpoint(new GetCommentListEndpoint());
+            addEndpoint(new GetRatingsEndpoint());
             server.setExecutor(null);
             server.start();
+            System.out.println("Server successfully started on port "+Config.getServerPort());
         }catch(IOException e){
             System.out.println("Cannot start http server on port "+Config.getServerPort());
         }
