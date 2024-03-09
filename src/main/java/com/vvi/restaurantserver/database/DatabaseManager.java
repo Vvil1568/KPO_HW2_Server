@@ -3,6 +3,7 @@ package com.vvi.restaurantserver.database;
 import com.vvi.restaurantserver.config.Config;
 import com.vvi.restaurantserver.database.tables.*;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -29,15 +30,15 @@ public class DatabaseManager {
 
     }
 
+    public Connection getSQLiteConnection(File file) throws SQLException{
+        final String url = "jdbc:sqlite:" + file.getAbsolutePath();
+        connection = DriverManager.getConnection(url);
+        return connection;
+    }
+
     public boolean init() {
-        final String url = "jdbc:mysql://" + Config.getDatabaseHost() + ":" + Config.getDatabasePort() + "/" + Config.getDatabaseName();
         try {
-            Properties properties = new Properties();
-            properties.setProperty("user", Config.getDatabaseLogin());
-            properties.setProperty("password", Config.getDatabasePassword());
-            properties.setProperty("useUnicode", "true");
-            properties.setProperty("characterEncoding", "UTF-8");
-            connection = DriverManager.getConnection(url, properties);
+            connection = getSQLiteConnection(new File("restaurantdb.db"));
             userManager = new UserManager(connection);
             dishManager = new DishManager(connection);
             orderManager = new OrderManager(connection);
