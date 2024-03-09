@@ -13,6 +13,7 @@ public class JsonSerialisationUtils {
         dishObj.addProperty("desc",dish.getDescription());
         dishObj.addProperty("price",dish.getPrice());
         dishObj.addProperty("time",dish.getTime());
+        dishObj.addProperty("image", dish.getImage());
         return dishObj;
     }
 

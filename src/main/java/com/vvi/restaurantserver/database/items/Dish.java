@@ -7,16 +7,23 @@ public class Dish {
     private double price;
     private long time;
 
-    public Dish(String name, String description, double price, long time){
-        this(-1, name, description, price, time);
+    private String image;
+
+    public Dish(String name, String description, double price, long time, String image){
+        this(-1, name, description, price, time, image);
     }
 
-    public Dish(int id, String name, String description, double price, long time){
+    public Dish(String name, String description, double price, long time){
+        this(-1, name, description, price, time, "");
+    }
+
+    public Dish(int id, String name, String description, double price, long time, String image){
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.time = time;
+        this.image = image;
     }
 
     public int getId() {
@@ -41,5 +48,9 @@ public class Dish {
 
     public long getTime() {
         return time;
+    }
+
+    public String getImage() {
+        return image;
     }
 }
