@@ -31,7 +31,8 @@ public class OrderManager {
     private final String GET_LAST_PART_QUERY = "SELECT last_part FROM `order` WHERE order_id=?;";
 
     private final String ADD_DISH_TO_ORDER_QUERY = "INSERT INTO order_to_dish (order_id, dish_id, order_part, count) " +
-            "VALUES (?,?,?,1) ON DUPLICATE KEY UPDATE count = count + 1;";
+            "VALUES (?,?,?,1) ON CONFLICT(order_id, dish_id, order_part) \n" +
+            "DO UPDATE SET count = count + 1;";
 
     private final String DELETE_DISH_QUERY = "DELETE FROM order_to_dish WHERE order_id = ? AND dish_id = ? AND order_part = ?;";
 
@@ -67,7 +68,8 @@ public class OrderManager {
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
                 long time = resultSet.getLong("time");
-                result.add(new Dish(id, name, description, price, time));
+                String image = resultSet.getString("image");
+                result.add(new Dish(id, name, description, price, time, image));
             }
             return result;
         } catch (SQLException e) {
@@ -78,7 +80,7 @@ public class OrderManager {
 
 
     public ArrayList<AbstractMap.SimpleEntry<Dish, Integer>> getOrderDishList(String userToken) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing getOrderDishList query");
             return new ArrayList<>();
@@ -101,7 +103,8 @@ public class OrderManager {
                 double price = resultSet.getDouble("price");
                 long time = resultSet.getLong("time");
                 int count = resultSet.getInt("count");
-                result.add(new AbstractMap.SimpleEntry<>(new Dish(id, name, description, price, time), count));
+                String image = resultSet.getString("image");
+                result.add(new AbstractMap.SimpleEntry<>(new Dish(id, name, description, price, time, image), count));
             }
             return result;
         } catch (SQLException e) {
@@ -111,7 +114,7 @@ public class OrderManager {
     }
 
     public int changeDishCount(String userToken, int dishId, int delta) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing changeDishCount query");
             return -1;
@@ -143,7 +146,7 @@ public class OrderManager {
     }
 
     public int getDishCount(String userToken, int dishId) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing getDishCount query");
             return -1;
@@ -169,7 +172,7 @@ public class OrderManager {
     }
 
     public boolean removeOrder(String userToken){
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing removeOrder query");
             return false;
@@ -188,7 +191,7 @@ public class OrderManager {
     }
 
     public OrderStatus getOrderStatus(String userToken) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing getOrderStatus query");
             return null;
@@ -207,12 +210,7 @@ public class OrderManager {
     }
 
     public boolean addDishToOrder(String userToken, int dishId) {
-        int curOrderId = getCurrentOrderId(userToken);
-        if (curOrderId == -1 && !startOrder(userToken)) {
-            System.out.println("An error occurred while executing addDishToOrder query");
-            return false;
-        }
-        curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing addDishToOrder query");
             return false;
@@ -236,7 +234,7 @@ public class OrderManager {
     }
 
     private boolean removeDishFromOrder(String userToken, int dishId) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing removeDishToOrder query");
             return false;
@@ -277,7 +275,7 @@ public class OrderManager {
     }
 
     public boolean changeOrderStatus(String userToken, OrderStatus status) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing changeOrderStatus query");
             return false;
@@ -315,7 +313,7 @@ public class OrderManager {
     }
 
     private int getLastPart(String userToken) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing getLastPart query");
             return -1;
@@ -332,8 +330,22 @@ public class OrderManager {
         return -1;
     }
 
-    public long getCookingTime(String userToken) {
+    public int getOrCreateOrderId(String userToken){
         int curOrderId = getCurrentOrderId(userToken);
+        if (curOrderId == -1 && !startOrder(userToken)) {
+            System.out.println("An error occurred while executing getOrCreateOrderId query");
+            return -1;
+        }
+        curOrderId = getCurrentOrderId(userToken);
+        if (curOrderId == -1) {
+            System.out.println("An error occurred while executing getOrCreateOrderId query");
+            return -1;
+        }
+        return curOrderId;
+    }
+
+    public long getCookingTime(String userToken) {
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing getCookingTime query");
             return -1;
@@ -351,7 +363,7 @@ public class OrderManager {
     }
 
     public boolean incrementLastPart(String userToken) {
-        int curOrderId = getCurrentOrderId(userToken);
+        int curOrderId = getOrCreateOrderId(userToken);
         if (curOrderId == -1) {
             System.out.println("An error occurred while executing incrementLastPart query");
             return false;

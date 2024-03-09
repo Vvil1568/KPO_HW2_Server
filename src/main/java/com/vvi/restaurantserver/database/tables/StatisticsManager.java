@@ -13,14 +13,14 @@ import java.util.ArrayList;
 public class StatisticsManager {
 
     private final Connection connection;
-    private final String TOTAL_REVENUE_QUERY = "SELECT sum(order_to_dish.count*dish.price) FROM `order` JOIN order_to_dish ON `order`.order_id = order_to_dish.order_id JOIN dish ON dish.id=order_to_dish.dish_id WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=?;";
+    private final String TOTAL_REVENUE_QUERY = "SELECT sum(order_to_dish.count*dish.price) FROM `order` JOIN order_to_dish ON `order`.order_id = order_to_dish.order_id JOIN dish ON dish.id=order_to_dish.dish_id WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=? AND `order`.status=4;";
 
-    private final String COUNT_ORDER_QUERY = "SELECT count(1) FROM `order` WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=?;";
+    private final String COUNT_ORDER_QUERY = "SELECT count(1) FROM `order` WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=? AND `order`.status=4;";
 
     private final String FAVOURITE_DISH_QUERY =
             "SELECT dish.name FROM ((SELECT sum(order_to_dish.count) as cnt, dish_id " +
             "FROM order_to_dish JOIN `order` ON order_to_dish.order_id = `order`.order_id  " +
-            "WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=? GROUP BY dish_id) AS counts) " +
+            "WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=?  AND `order`.status=4 GROUP BY dish_id) AS counts) " +
             "JOIN dish ON counts.dish_id=dish.id ORDER BY cnt DESC LIMIT 1;";
 
     private final String GET_COMMENTS_QUERY = "SELECT dish.name, body, stars FROM comments JOIN dish ON dish.id=comments.dish_id  WHERE comments.post_timestamp<=? AND comments.post_timestamp>=?;";

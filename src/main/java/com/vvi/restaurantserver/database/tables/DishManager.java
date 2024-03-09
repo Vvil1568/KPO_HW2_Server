@@ -12,8 +12,9 @@ public class DishManager {
     private final Connection connection;
 
     private final String DISH_LIST_QUERY = "SELECT * FROM dish;";
-    private final String INSERT_DISH_QUERY = "INSERT INTO dish (name, description, price, time) VALUES (?,?,?,?);";
-    private final String LAST_INSERT_ID_QUERY = "SELECT LAST_INSERT_ID();";
+    private final String INSERT_DISH_QUERY = "INSERT INTO dish (name, description, price, time, image) VALUES (?,?,?,?,?);";
+    private final String UPDATE_DISH_QUERY = "UPDATE dish SET name=?, description=?, price=?, time=?, image=? WHERE id=?;";
+    private final String LAST_INSERT_ID_QUERY = "SELECT last_insert_rowid();";
     private final String REMOVE_DISH_QUERY = "DELETE FROM dish WHERE id=?;";
 
     public DishManager(Connection connection) {
@@ -31,7 +32,8 @@ public class DishManager {
                 String description = resultSet.getString("description");
                 double price = resultSet.getDouble("price");
                 long time = resultSet.getLong("time");
-                result.add(new Dish(id, name, description, price, time));
+                String image = resultSet.getString("image");
+                result.add(new Dish(id, name, description, price, time, image));
             }
             return result;
         } catch (SQLException e) {
@@ -47,6 +49,34 @@ public class DishManager {
             statement.setString(2, dish.getDescription());
             statement.setDouble(3, dish.getPrice());
             statement.setLong(4, dish.getTime());
+            statement.setString(5, dish.getImage());
+            int result = statement.executeUpdate();
+            if(result != 1){
+                return dish;
+            }
+            statement = connection.prepareStatement(LAST_INSERT_ID_QUERY);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                dish.setId(resultSet.getInt(1));
+                return dish;
+            }
+
+            return dish;
+        } catch (SQLException e) {
+            System.out.println("An error occurred while executing addDish query");
+        }
+        return dish;
+    }
+
+    public Dish updateDish(Dish dish) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_DISH_QUERY);
+            statement.setString(1, dish.getName());
+            statement.setString(2, dish.getDescription());
+            statement.setDouble(3, dish.getPrice());
+            statement.setLong(4, dish.getTime());
+            statement.setString(5, dish.getImage());
+            statement.setInt(6, dish.getId());
             int result = statement.executeUpdate();
             if(result != 1){
                 return dish;
