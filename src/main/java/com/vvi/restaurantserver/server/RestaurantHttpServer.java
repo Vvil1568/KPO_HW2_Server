@@ -6,6 +6,7 @@ import com.vvi.restaurantserver.server.endpoints.DefaultEndpoint;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
 import com.vvi.restaurantserver.server.endpoints.comment.LeaveCommentEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.AddDishEndpoint;
+import com.vvi.restaurantserver.server.endpoints.dish.EditDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.GetDishListEndpoint;
 import com.vvi.restaurantserver.server.endpoints.dish.RemoveDishEndpoint;
 import com.vvi.restaurantserver.server.endpoints.order.*;
@@ -49,6 +50,7 @@ public class RestaurantHttpServer {
             addEndpoint(new GetFavouriteDishEndpoint());
             addEndpoint(new GetCommentListEndpoint());
             addEndpoint(new GetRatingsEndpoint());
+            addEndpoint(new EditDishEndpoint());
             server.setExecutor(null);
             server.start();
             System.out.println("Server successfully started on port "+Config.getServerPort());
