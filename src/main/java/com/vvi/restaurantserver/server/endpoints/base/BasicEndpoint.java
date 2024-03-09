@@ -9,10 +9,8 @@ import com.sun.net.httpserver.HttpHandler;
 import com.vvi.restaurantserver.database.DatabaseManager;
 import com.vvi.restaurantserver.database.tables.UserManager;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +30,17 @@ public abstract class BasicEndpoint implements HttpHandler {
     }
 
     private JsonObject getBody(HttpExchange http) {
-        Reader reader = new InputStreamReader(http.getRequestBody(), StandardCharsets.UTF_8);
         try {
-            return gson.fromJson(reader, JsonObject.class);
-        } catch (JsonIOException | JsonSyntaxException e) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(http.getRequestBody(), StandardCharsets.UTF_8));
+            StringBuilder response = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+            reader.close();
+            String recoded = new String(response.toString().getBytes(StandardCharsets.UTF_8), Charset.defaultCharset());
+            return gson.fromJson(recoded, JsonObject.class);
+        } catch (IOException | JsonSyntaxException e) {
             logError("Cannot parse request body");
             return null;
         }
