@@ -22,24 +22,32 @@ public class KitchenSimulator {
         ArrayList<Future<Void>> oldList = orders.computeIfAbsent(order_id,(id) -> new ArrayList<>());
         final int oldCurId = oldList.size();
         Future<?> future = cooks.submit(()->{
-            int curId = oldCurId;
-            System.out.println("Started to work on "+curId+" part of "+order_id+" order!");
+            System.out.println("Started to work on "+ oldCurId +" part of "+order_id+" order!");
             try{
                 DatabaseManager.getInstance().orderManager.changeOrderStatus(order_id, OrderStatus.PLACED);
                 Thread.sleep(time);
                 ArrayList<Future<Void>> list = orders.get(order_id);
-                list.remove(curId);
-                System.out.println("Finished "+curId+" part of "+order_id+" order!");
-                if(list.isEmpty()) {
+                list.set(oldCurId,null);
+                System.out.println("Finished "+ oldCurId +" part of "+order_id+" order!");
+                if(hasFinished(order_id)) {
                     DatabaseManager.getInstance().orderManager.changeOrderStatus(order_id, OrderStatus.COOKED);
                     orders.remove(order_id);
                     System.out.println("Finished "+order_id+" order!");
                 }
             }catch (InterruptedException ignored){
-                System.out.println("Stopped working on "+curId+" part of "+order_id+" order!");
+                System.out.println("Stopped working on "+ oldCurId +" part of "+order_id+" order!");
             }
         });
         orders.computeIfAbsent(order_id,(id) -> new ArrayList<>()).add((Future<Void>) future);
+    }
+
+    public boolean hasFinished(int order_id){
+        if(!orders.containsKey(order_id)) return true;
+        ArrayList<Future<Void>> list = orders.get(order_id);
+        for(Future<Void> future : list){
+            if(future!=null) return false;
+        }
+        return true;
     }
 
     public void cancelOrder(int order_id){
