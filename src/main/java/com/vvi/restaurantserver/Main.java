@@ -16,7 +16,7 @@ public class Main {
         String command;
         do {
             command = scanner.next();
-        } while (command.equals("STOP"));
+        } while (!command.equals("STOP"));
         server.stopServer();
         DatabaseManager.getInstance().shutdown();
     }
