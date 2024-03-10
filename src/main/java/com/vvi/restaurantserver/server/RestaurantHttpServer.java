@@ -15,6 +15,7 @@ import com.vvi.restaurantserver.server.endpoints.user.*;
 import com.vvi.restaurantserver.simulation.KitchenSimulator;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.net.InetSocketAddress;
 
 public class RestaurantHttpServer {
@@ -53,11 +54,23 @@ public class RestaurantHttpServer {
             addEndpoint(new EditDishEndpoint());
             server.setExecutor(null);
             server.start();
+            System.out.println("Current server IP: " + getIp());
             System.out.println("Server successfully started on port "+Config.getServerPort());
         }catch(IOException e){
             System.out.println("Cannot start http server on port "+Config.getServerPort());
         }
     }
+    
+    public static String getIp(){
+        try {
+            InetAddress localhost = InetAddress.getLocalHost();
+            String ipAddress = localhost.getHostAddress();
+            return ipAddress;
+        }catch (Exception e){
+            return "";
+        }
+    }
+    
 
     private void addEndpoint(BasicEndpoint endpoint) {
         server.createContext(endpoint.name, endpoint);
