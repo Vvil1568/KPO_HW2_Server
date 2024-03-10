@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Fixed simulator">
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="workspace.xml changed">
+      <change afterPath="$PROJECT_DIR$/guide/adminMenu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guide/registrationLink.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/guide/registrationMenu.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +65,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\HSE\software_construction\HW2\RestaurantServer\guide" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vvi.restaurantserver.Main" />
@@ -370,7 +379,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709977954176</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="workspace.xml changed">
+      <option name="closed" value="true" />
+      <created>1710061745728</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1710061745728</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -385,7 +402,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated basic endpoint" />
     <MESSAGE value="Updated default endpoint, added login and registration endpoints" />
     <MESSAGE value="Changed server and main structure" />
     <MESSAGE value="Changed database to using singleton pattern" />
@@ -410,7 +426,8 @@
     <MESSAGE value="Fixed server stopping" />
     <MESSAGE value="Added edit dish endpoint" />
     <MESSAGE value="Fixed simulator" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed simulator" />
+    <MESSAGE value="workspace.xml changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml changed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
