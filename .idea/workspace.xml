@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="workspace.xml changed">
-      <change afterPath="$PROJECT_DIR$/guide/adminMenu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guide/registrationLink.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/guide/registrationMenu.png" afterDir="false" />
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Started to write README.md">
+      <change afterPath="$PROJECT_DIR$/INSTALL.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
@@ -387,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710061745728</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Started to write README.md">
+      <option name="closed" value="true" />
+      <created>1710067994379</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1710067994379</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -402,7 +408,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated default endpoint, added login and registration endpoints" />
     <MESSAGE value="Changed server and main structure" />
     <MESSAGE value="Changed database to using singleton pattern" />
     <MESSAGE value="Added dish manager and dish classes" />
@@ -427,7 +432,8 @@
     <MESSAGE value="Added edit dish endpoint" />
     <MESSAGE value="Fixed simulator" />
     <MESSAGE value="workspace.xml changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="workspace.xml changed" />
+    <MESSAGE value="Started to write README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started to write README.md" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
