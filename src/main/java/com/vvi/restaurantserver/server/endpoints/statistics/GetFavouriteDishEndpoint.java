@@ -23,7 +23,7 @@ public class GetFavouriteDishEndpoint extends BasicEndpoint {
         long timeFrom = body.get("time_from").getAsLong();
         long timeTo = body.get("time_to").getAsLong();
         String favouriteDish = DatabaseManager.getInstance().statisticsManager.getFavouriteDish(timeFrom, timeTo);
-        if(favouriteDish.isEmpty()){
+        if (favouriteDish.isEmpty()) {
             sendResponse(http, 400, "An error occurred during the favourite dish evaluation");
             return;
         }

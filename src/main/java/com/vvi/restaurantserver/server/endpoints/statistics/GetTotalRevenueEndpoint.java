@@ -23,7 +23,7 @@ public class GetTotalRevenueEndpoint extends BasicEndpoint {
         long timeFrom = body.get("time_from").getAsLong();
         long timeTo = body.get("time_to").getAsLong();
         double totalRevenue = DatabaseManager.getInstance().statisticsManager.getTotalRevenue(timeFrom, timeTo);
-        if(totalRevenue==-1){
+        if (totalRevenue == -1) {
             sendResponse(http, 400, "An error occurred during the total revenue count");
             return;
         }

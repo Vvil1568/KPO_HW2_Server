@@ -1,7 +1,6 @@
 package com.vvi.restaurantserver.database.tables;
 
 import com.vvi.restaurantserver.database.items.Comment;
-import com.vvi.restaurantserver.database.items.Dish;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,9 +18,9 @@ public class StatisticsManager {
 
     private final String FAVOURITE_DISH_QUERY =
             "SELECT dish.name FROM ((SELECT sum(order_to_dish.count) as cnt, dish_id " +
-            "FROM order_to_dish JOIN `order` ON order_to_dish.order_id = `order`.order_id  " +
-            "WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=?  AND `order`.status=4 GROUP BY dish_id) AS counts) " +
-            "JOIN dish ON counts.dish_id=dish.id ORDER BY cnt DESC LIMIT 1;";
+                    "FROM order_to_dish JOIN `order` ON order_to_dish.order_id = `order`.order_id  " +
+                    "WHERE `order`.post_timestamp<=? AND `order`.post_timestamp>=?  AND `order`.status=4 GROUP BY dish_id) AS counts) " +
+                    "JOIN dish ON counts.dish_id=dish.id ORDER BY cnt DESC LIMIT 1;";
 
     private final String GET_COMMENTS_QUERY = "SELECT dish.name, body, stars FROM comments JOIN dish ON dish.id=comments.dish_id  WHERE comments.post_timestamp<=? AND comments.post_timestamp>=?;";
 

@@ -14,7 +14,7 @@ public class EditDishEndpoint extends BasicEndpoint {
         super("/dish/edit");
         new Builder(this)
                 .setRequestMethod(RequestMethod.POST)
-                .setRequiredFields(new String[]{"id","name", "desc", "price", "time", "image"})
+                .setRequiredFields(new String[]{"id", "name", "desc", "price", "time", "image"})
                 .setRequireToken()
                 .setAdminOnly();
     }
@@ -28,7 +28,7 @@ public class EditDishEndpoint extends BasicEndpoint {
         long time = body.get("time").getAsLong();
         String image = body.get("image").getAsString();
         Dish newDish = DatabaseManager.getInstance().dishManager.updateDish(new Dish(id, name, desc, price, time, image));
-        if(newDish.getId()==-1){
+        if (newDish.getId() == -1) {
             sendResponse(http, 400, "An error occurred during the dish addition");
             return;
         }

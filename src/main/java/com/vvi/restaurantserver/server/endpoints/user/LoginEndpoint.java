@@ -8,7 +8,6 @@ import com.vvi.restaurantserver.database.tables.UserManager;
 import com.vvi.restaurantserver.server.endpoints.base.BasicEndpoint;
 import com.vvi.restaurantserver.server.endpoints.base.RequestMethod;
 
-import java.nio.charset.StandardCharsets;
 import java.util.AbstractMap;
 
 public class LoginEndpoint extends BasicEndpoint {
@@ -31,7 +30,7 @@ public class LoginEndpoint extends BasicEndpoint {
             return;
         }
         AbstractMap.SimpleEntry<String, Boolean> result = userManager.login(login, passHash);
-        if(result.getKey().equals("")){
+        if(result.getKey().isEmpty()){
             sendResponse(http, 400, "Неправильный логин или пароль");
             return;
         }

@@ -1,15 +1,16 @@
 package com.vvi.restaurantserver.server.endpoints.base;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.vvi.restaurantserver.database.DatabaseManager;
-import com.vvi.restaurantserver.database.tables.UserManager;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
@@ -53,14 +54,14 @@ public abstract class BasicEndpoint implements HttpHandler {
             return;
         }
         List<String> tokens = http.getRequestHeaders().get("Authorization");
-        if(tokens!=null && !tokens.isEmpty() && tokens.get(0).startsWith("Bearer ")){
+        if (tokens != null && !tokens.isEmpty() && tokens.get(0).startsWith("Bearer ")) {
             this.token = tokens.get(0).substring(7);
         }
-        if(requireToken && !DatabaseManager.getInstance().userManager.isValidUser(token)){
+        if (requireToken && !DatabaseManager.getInstance().userManager.isValidUser(token)) {
             sendResponse(http, 401, "Invalid authorisation token!");
             return;
         }
-        if(adminOnly && !DatabaseManager.getInstance().userManager.isAdmin(token)){
+        if (adminOnly && !DatabaseManager.getInstance().userManager.isAdmin(token)) {
             sendResponse(http, 401, "Invalid authorisation token!");
             return;
         }
@@ -107,28 +108,29 @@ public abstract class BasicEndpoint implements HttpHandler {
         System.out.println(message);
     }
 
-    public static class Builder{
+    public static class Builder {
         BasicEndpoint endpoint;
-        public Builder(BasicEndpoint endpoint){
+
+        public Builder(BasicEndpoint endpoint) {
             this.endpoint = endpoint;
         }
 
-        public Builder setRequiredFields(String[] requiredFields){
+        public Builder setRequiredFields(String[] requiredFields) {
             endpoint.requiredFields = requiredFields;
             return this;
         }
 
-        public Builder setRequestMethod(RequestMethod method){
+        public Builder setRequestMethod(RequestMethod method) {
             endpoint.requestMethod = method;
             return this;
         }
 
-        public Builder setRequireToken(){
+        public Builder setRequireToken() {
             endpoint.requireToken = true;
             return this;
         }
 
-        public Builder setAdminOnly(){
+        public Builder setAdminOnly() {
             endpoint.adminOnly = true;
             return this;
         }

@@ -20,7 +20,7 @@ public class RemoveDishEndpoint extends BasicEndpoint {
     @Override
     public void handle(HttpExchange http, JsonObject body) {
         int id = body.get("id").getAsInt();
-        if(!DatabaseManager.getInstance().dishManager.deleteDish(id)){
+        if (!DatabaseManager.getInstance().dishManager.deleteDish(id)) {
             sendResponse(http, 400, "An error occurred during the dish removal");
             return;
         }

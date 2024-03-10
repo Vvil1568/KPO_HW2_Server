@@ -20,7 +20,7 @@ public class AddDishToOrderEndpoint extends BasicEndpoint {
     public void handle(HttpExchange http, JsonObject body) {
         int dishId = body.get("dish_id").getAsInt();
 
-        if(!DatabaseManager.getInstance().orderManager.addDishToOrder(token, dishId)){
+        if (!DatabaseManager.getInstance().orderManager.addDishToOrder(token, dishId)) {
             sendResponse(http, 400, "An error occurred during the addition of dish to order");
             return;
         }

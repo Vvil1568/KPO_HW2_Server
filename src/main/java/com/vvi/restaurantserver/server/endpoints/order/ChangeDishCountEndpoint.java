@@ -22,7 +22,7 @@ public class ChangeDishCountEndpoint extends BasicEndpoint {
         int dishId = body.get("dish_id").getAsInt();
         int delta = body.get("delta").getAsInt();
         int newCount = DatabaseManager.getInstance().orderManager.changeDishCount(token, dishId, delta);
-        if(newCount==-1){
+        if (newCount == -1) {
             sendResponse(http, 400, "An error occurred during the change of dish count in order");
             return;
         }

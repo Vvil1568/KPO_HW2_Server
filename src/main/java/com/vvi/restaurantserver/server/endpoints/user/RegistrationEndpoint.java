@@ -31,7 +31,7 @@ public class RegistrationEndpoint extends BasicEndpoint {
             sendResponse(http, 400, "Пользователь с таким логином уже существует");
             return;
         }
-        if(!userManager.register(new User(fio, login, passHash, !userManager.hasUsers()))){
+        if (!userManager.register(new User(fio, login, passHash, !userManager.hasUsers()))) {
             sendResponse(http, 400, "An error occurred during the registration process");
             return;
         }

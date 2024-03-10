@@ -20,6 +20,7 @@ public class UserManager {
     private final String IS_VALID_USER_QUERY = "SELECT EXISTS(SELECT * FROM user WHERE token=?);";
     private final String IS_ADMIN_QUERY = "SELECT EXISTS(SELECT * FROM user WHERE token=? AND is_admin=1);";
     private final String CHANGE_MODE_QUERY = "UPDATE user SET is_admin = CASE WHEN is_admin = 1 THEN 0 ELSE 1 END WHERE login = ?;";
+
     public UserManager(Connection connection) {
         this.connection = connection;
     }
@@ -125,6 +126,7 @@ public class UserManager {
         }
         return false;
     }
+
     public boolean register(User user) {
         try {
             PreparedStatement statement = connection.prepareStatement(REGISTER_QUERY);

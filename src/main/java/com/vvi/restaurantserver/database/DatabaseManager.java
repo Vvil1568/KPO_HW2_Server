@@ -10,7 +10,6 @@ import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class DatabaseManager {
     private Connection connection;
@@ -61,12 +60,10 @@ public class DatabaseManager {
         }
     }
 
-    public boolean shutdown() {
+    public void shutdown() {
         try {
             connection.close();
-            return true;
-        } catch (SQLException e) {
-            return false;
+        } catch (SQLException ignored) {
         }
     }
 }

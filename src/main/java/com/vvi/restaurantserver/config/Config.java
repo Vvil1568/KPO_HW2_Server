@@ -1,12 +1,9 @@
 package com.vvi.restaurantserver.config;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -65,7 +62,7 @@ public class Config {
     public static boolean genConfigTemplate(String fileName) {
         File file = new File(fileName);
         try {
-            try(InputStream defaultConfig = Config.class.getClassLoader().getResourceAsStream("presets/config.cfg")){
+            try (InputStream defaultConfig = Config.class.getClassLoader().getResourceAsStream("presets/config.cfg")) {
                 Files.copy(defaultConfig, file.toPath());
             }
             return true;

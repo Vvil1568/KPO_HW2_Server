@@ -21,7 +21,7 @@ public class LeaveCommentEndpoint extends BasicEndpoint {
         int dish_id = body.get("dish_id").getAsInt();
         int stars = body.get("stars").getAsInt();
         String comment = body.get("comment").getAsString();
-        if(!DatabaseManager.getInstance().commentManager.addComment(token, dish_id, comment, stars)){
+        if (!DatabaseManager.getInstance().commentManager.addComment(token, dish_id, comment, stars)) {
             sendResponse(http, 400, "An error occurred during the comment addition");
             return;
         }

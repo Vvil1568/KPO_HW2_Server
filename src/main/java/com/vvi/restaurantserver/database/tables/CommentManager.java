@@ -2,7 +2,6 @@ package com.vvi.restaurantserver.database.tables;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CommentManager {
@@ -14,7 +13,7 @@ public class CommentManager {
         this.connection = connection;
     }
 
-    public boolean addComment(String token, int dishId, String body, int stars){
+    public boolean addComment(String token, int dishId, String body, int stars) {
         try {
             PreparedStatement statement = connection.prepareStatement(INSERT_COMMENT_QUERY);
             statement.setString(1, token);
@@ -23,7 +22,7 @@ public class CommentManager {
             statement.setString(4, body);
             statement.setInt(5, stars);
             int result = statement.executeUpdate();
-            if(result == 1){
+            if (result == 1) {
                 return true;
             }
         } catch (SQLException e) {

@@ -51,7 +51,7 @@ public class DishManager {
             statement.setLong(4, dish.getTime());
             statement.setString(5, dish.getImage());
             int result = statement.executeUpdate();
-            if(result != 1){
+            if (result != 1) {
                 return dish;
             }
             statement = connection.prepareStatement(LAST_INSERT_ID_QUERY);
@@ -78,7 +78,7 @@ public class DishManager {
             statement.setString(5, dish.getImage());
             statement.setInt(6, dish.getId());
             int result = statement.executeUpdate();
-            if(result != 1){
+            if (result != 1) {
                 return dish;
             }
             statement = connection.prepareStatement(LAST_INSERT_ID_QUERY);

@@ -2,22 +2,22 @@ package com.vvi.restaurantserver.database.items;
 
 public class Dish {
     private int id;
-    private String name;
-    private String description;
-    private double price;
-    private long time;
+    private final String name;
+    private final String description;
+    private final double price;
+    private final long time;
 
-    private String image;
+    private final String image;
 
-    public Dish(String name, String description, double price, long time, String image){
+    public Dish(String name, String description, double price, long time, String image) {
         this(-1, name, description, price, time, image);
     }
 
-    public Dish(String name, String description, double price, long time){
+    public Dish(String name, String description, double price, long time) {
         this(-1, name, description, price, time, "");
     }
 
-    public Dish(int id, String name, String description, double price, long time, String image){
+    public Dish(int id, String name, String description, double price, long time, String image) {
         this.id = id;
         this.name = name;
         this.description = description;

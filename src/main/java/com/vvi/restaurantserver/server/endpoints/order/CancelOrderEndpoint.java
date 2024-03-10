@@ -23,8 +23,8 @@ public class CancelOrderEndpoint extends BasicEndpoint {
     @Override
     public void handle(HttpExchange http, JsonObject body) {
         OrderStatus status = DatabaseManager.getInstance().orderManager.getOrderStatus(token);
-        if(status!=OrderStatus.ACCEPTED && status!=OrderStatus.PLACED){
-            sendResponse(http, 400, "Невозможно отменить заказ, который "+status.name);
+        if (status != OrderStatus.ACCEPTED && status != OrderStatus.PLACED) {
+            sendResponse(http, 400, "Невозможно отменить заказ, который " + status.name);
             return;
         }
 
@@ -32,7 +32,7 @@ public class CancelOrderEndpoint extends BasicEndpoint {
         simulator.cancelOrder(orderId);
 
 
-        if(!DatabaseManager.getInstance().orderManager.removeOrder(token)){
+        if (!DatabaseManager.getInstance().orderManager.removeOrder(token)) {
             sendResponse(http, 400, "Ошибка при удалении заказа из базы данных");
             return;
         }

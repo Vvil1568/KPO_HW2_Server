@@ -23,7 +23,7 @@ public class GetOrderCountEndpoint extends BasicEndpoint {
         long timeFrom = body.get("time_from").getAsLong();
         long timeTo = body.get("time_to").getAsLong();
         int totalRevenue = DatabaseManager.getInstance().statisticsManager.getOrderCount(timeFrom, timeTo);
-        if(totalRevenue==-1){
+        if (totalRevenue == -1) {
             sendResponse(http, 400, "An error occurred during the order count count");
             return;
         }

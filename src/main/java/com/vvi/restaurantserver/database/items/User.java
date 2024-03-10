@@ -9,20 +9,12 @@ public class User {
     private final String passHash;
     private final boolean isAdmin;
 
-    public User(String login, String passHash) {
-        this("", "", login, passHash, false);
-    }
-
     public User(String fio, String login, boolean isAdmin) {
         this("", fio, login, "", isAdmin);
     }
 
     public User(String fio, String login, String passHash, boolean isAdmin) {
         this(generateToken(login), fio, login, passHash, isAdmin);
-    }
-
-    private User(String token, String fio, String login, String passHash) {
-        this(token, fio, login, passHash, false);
     }
 
     private User(String token, String fio, String login, String passHash, boolean isAdmin) {

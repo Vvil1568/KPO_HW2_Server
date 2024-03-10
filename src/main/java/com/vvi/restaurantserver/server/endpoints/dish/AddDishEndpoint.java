@@ -27,7 +27,7 @@ public class AddDishEndpoint extends BasicEndpoint {
         long time = body.get("time").getAsLong();
         String image = body.get("image").getAsString();
         Dish newDish = DatabaseManager.getInstance().dishManager.addDish(new Dish(name, desc, price, time, image));
-        if(newDish.getId()==-1){
+        if (newDish.getId() == -1) {
             sendResponse(http, 400, "An error occurred during the dish addition");
             return;
         }

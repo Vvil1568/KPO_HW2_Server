@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Started to write README.md">
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Made default config and database load from resources folder">
+      <change afterPath="$PROJECT_DIR$/INFO.md" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/INSTALL.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +22,21 @@
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -68,7 +87,7 @@
       <recent name="D:\HSE\software_construction\HW2\RestaurantServer\guide" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Gradle.RestaurantServer [build]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vvi.restaurantserver.Main" />
       <module name="RestaurantServer.main" />
@@ -82,8 +101,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RestaurantServer [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.RestaurantServer [build]" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -393,7 +435,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710067994379</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Continues to write README.md">
+      <option name="closed" value="true" />
+      <created>1710071298757</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1710071298759</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Made default config and database load from resources folder">
+      <option name="closed" value="true" />
+      <created>1710073123111</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1710073123113</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -408,8 +466,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed server and main structure" />
-    <MESSAGE value="Changed database to using singleton pattern" />
     <MESSAGE value="Added dish manager and dish classes" />
     <MESSAGE value="Added new endpoints for dish management" />
     <MESSAGE value="Changed basic endpoint and login/registration endpoints structure" />
@@ -433,7 +489,9 @@
     <MESSAGE value="Fixed simulator" />
     <MESSAGE value="workspace.xml changed" />
     <MESSAGE value="Started to write README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started to write README.md" />
+    <MESSAGE value="Continues to write README.md" />
+    <MESSAGE value="Made default config and database load from resources folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made default config and database load from resources folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -445,5 +503,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.io.BufferedInputStream" memberName="marklimit" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>

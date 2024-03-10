@@ -55,22 +55,22 @@ public class RestaurantHttpServer {
             server.setExecutor(null);
             server.start();
             System.out.println("Current server IP: " + getIp());
-            System.out.println("Server successfully started on port "+Config.getServerPort());
-        }catch(IOException e){
-            System.out.println("Cannot start http server on port "+Config.getServerPort());
+            System.out.println("Server successfully started on port " + Config.getServerPort());
+        } catch (IOException e) {
+            System.out.println("Cannot start http server on port " + Config.getServerPort());
         }
     }
-    
-    public static String getIp(){
+
+    public static String getIp() {
         try {
             InetAddress localhost = InetAddress.getLocalHost();
             String ipAddress = localhost.getHostAddress();
             return ipAddress;
-        }catch (Exception e){
+        } catch (Exception e) {
             return "";
         }
     }
-    
+
 
     private void addEndpoint(BasicEndpoint endpoint) {
         server.createContext(endpoint.name, endpoint);
