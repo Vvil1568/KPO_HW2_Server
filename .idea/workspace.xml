@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Added statistics data manager and statistics endpoints">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/dish/EditDishEndpoint.java" afterDir="false" />
+    <list default="true" id="ed52b504-5f9a-401a-a6c4-7d0aff766e14" name="Changes" comment="Fixed simulator">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/items/Dish.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/DishManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/DishManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/OrderManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/StatisticsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/database/tables/StatisticsManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/RestaurantHttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/base/BasicEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/base/BasicEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/dish/AddDishEndpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/server/endpoints/dish/AddDishEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/simulation/KitchenSimulator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/utils/JsonSerialisationUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vvi/restaurantserver/utils/JsonSerialisationUtils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,7 +314,63 @@
       <option name="project" value="LOCAL" />
       <updated>1708853115236</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixed charsets">
+      <option name="closed" value="true" />
+      <created>1709977738409</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977738409</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Migrated to the SQLite database">
+      <option name="closed" value="true" />
+      <created>1709977794991</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977794991</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Migrated queries to the SQLite">
+      <option name="closed" value="true" />
+      <created>1709977867308</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977867308</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Added the ability to add images to dishes">
+      <option name="closed" value="true" />
+      <created>1709977895165</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977895165</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Fixed server stopping">
+      <option name="closed" value="true" />
+      <created>1709977919762</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977919762</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Added edit dish endpoint">
+      <option name="closed" value="true" />
+      <created>1709977936047</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977936047</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Fixed simulator">
+      <option name="closed" value="true" />
+      <created>1709977954176</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1709977954176</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -342,13 +385,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added a MySQL driver to build configuration" />
-    <MESSAGE value="Implemented a configuration" />
-    <MESSAGE value="Refactored http server" />
-    <MESSAGE value="Added google gson dependency" />
-    <MESSAGE value="Update idea caches" />
-    <MESSAGE value="Added database and a user manager" />
-    <MESSAGE value="Added new fields to config" />
     <MESSAGE value="Updated basic endpoint" />
     <MESSAGE value="Updated default endpoint, added login and registration endpoints" />
     <MESSAGE value="Changed server and main structure" />
@@ -367,7 +403,14 @@
     <MESSAGE value="Added post order endpoint to the server" />
     <MESSAGE value="Added pay and cancel request endpoints for the order" />
     <MESSAGE value="Added statistics data manager and statistics endpoints" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added statistics data manager and statistics endpoints" />
+    <MESSAGE value="Fixed charsets" />
+    <MESSAGE value="Migrated to the SQLite database" />
+    <MESSAGE value="Migrated queries to the SQLite" />
+    <MESSAGE value="Added the ability to add images to dishes" />
+    <MESSAGE value="Fixed server stopping" />
+    <MESSAGE value="Added edit dish endpoint" />
+    <MESSAGE value="Fixed simulator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed simulator" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
