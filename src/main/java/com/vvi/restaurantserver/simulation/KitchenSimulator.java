@@ -4,29 +4,28 @@ import com.vvi.restaurantserver.config.Config;
 import com.vvi.restaurantserver.database.DatabaseManager;
 import com.vvi.restaurantserver.database.items.OrderStatus;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class KitchenSimulator {
     private final ExecutorService cooks;
-    private final HashMap<Integer, ArrayList<Future<Void>>> orders;
+    private final Map<Integer, List<Future<Void>>> orders;
     public KitchenSimulator(){
         cooks = Executors.newFixedThreadPool(Config.getCooksCount());
-        orders = new HashMap<>();
+        orders = Collections.synchronizedMap(new HashMap<>());
     }
 
     public void cookOrder(int order_id, long time){
-        ArrayList<Future<Void>> oldList = orders.computeIfAbsent(order_id,(id) -> new ArrayList<>());
+        List<Future<Void>> oldList = orders.computeIfAbsent(order_id,(id) -> Collections.synchronizedList(new ArrayList<>()));
         final int oldCurId = oldList.size();
         Future<?> future = cooks.submit(()->{
             System.out.println("Started to work on "+ oldCurId +" part of "+order_id+" order!");
             try{
                 DatabaseManager.getInstance().orderManager.changeOrderStatus(order_id, OrderStatus.PLACED);
                 Thread.sleep(time);
-                ArrayList<Future<Void>> list = orders.get(order_id);
+                List<Future<Void>> list = orders.get(order_id);
                 list.set(oldCurId,null);
                 System.out.println("Finished "+ oldCurId +" part of "+order_id+" order!");
                 if(hasFinished(order_id)) {
@@ -38,12 +37,12 @@ public class KitchenSimulator {
                 System.out.println("Stopped working on "+ oldCurId +" part of "+order_id+" order!");
             }
         });
-        orders.computeIfAbsent(order_id,(id) -> new ArrayList<>()).add((Future<Void>) future);
+        orders.computeIfAbsent(order_id,(id) -> Collections.synchronizedList(new ArrayList<>())).add((Future<Void>) future);
     }
 
     public boolean hasFinished(int order_id){
         if(!orders.containsKey(order_id)) return true;
-        ArrayList<Future<Void>> list = orders.get(order_id);
+        List<Future<Void>> list = orders.get(order_id);
         for(Future<Void> future : list){
             if(future!=null) return false;
         }
