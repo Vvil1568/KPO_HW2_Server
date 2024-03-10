@@ -4,6 +4,9 @@ import com.vvi.restaurantserver.config.Config;
 import com.vvi.restaurantserver.database.tables.*;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -38,7 +41,15 @@ public class DatabaseManager {
 
     public boolean init() {
         try {
-            connection = getSQLiteConnection(new File("restaurantdb.db"));
+            File databaseFile = new File("restaurantdb.db");
+            if(!databaseFile.exists()){
+                try(InputStream defaultConfig = Config.class.getClassLoader().getResourceAsStream("presets/restaurantdb.db")){
+                    Files.copy(defaultConfig, databaseFile.toPath());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            connection = getSQLiteConnection(databaseFile);
             userManager = new UserManager(connection);
             dishManager = new DishManager(connection);
             orderManager = new OrderManager(connection);
